@@ -28,6 +28,8 @@
             color: rgb(228, 104, 228);
             font-weight: bolder;
             margin-bottom: 5px;
+            text-shadow: 5px 5px 10px #cbced1,
+                -5px -5px 10px #ffffff;
             /* font-family: sans-serif; */
         }
 
@@ -45,6 +47,13 @@
                 -5px -5px 10px #ffffff;
         }
 
+        .tthallow {
+            margin: 10px 6px 10px 6px;
+            border-radius: 20px;
+            box-shadow: inset 5px 5px 10px #cbced1,
+                inset -5px -5px 10px #ffffff;
+        }
+
         .ttsummary {
             height: 100px;
             display: flex;
@@ -54,11 +63,12 @@
         }
 
         .ttTypeInfo {
+            margin-top: 15px;
             height: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 7px 10px;
+            padding: 15px 10px;
         }
 
         .ttdashboard {
@@ -79,19 +89,36 @@
             display: flex;
         }
 
+        .tiles-type2 {
+            margin: 0px 10px;
+            padding: 3%;
+            width: 50%;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px #cbced1,
+                -5px -5px 10px #ffffff;
+        }
+
+        .tiles-type2 div {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 3px;
+        }
+
+
         .tiles-type1 {
             padding: 3%;
             height: 55px;
             width: 46%;
-            background-color: rgb(228, 220, 220);
+            /* background-color: rgb(228, 220, 220); */
+            background: radial-gradient(circle farthest-corner at 100% 150%, #d75dbc 10%, #6a4bc4 50%);
             border-radius: 10px;
             margin: 0px 10px;
             /* box-shadow: inset 2px 2px 8px lightgray; */
         }
 
         .tiles-type1 .iconspace {
-            width: 50%;
-            padding: 0% 5%;
+            width: 40%;
+            margin: 0% 5%;
             /* background: black; */
             border-radius: 50%;
             box-shadow: inset 2px 2px 8px lightgrey;
@@ -100,8 +127,10 @@
 
         .tiles-type1 .head {
             padding-left: 4px;
+        }
+
+        .tiles-container .texts {
             font-size: 1em;
-            color: #5f5757;
             letter-spacing: 1px;
             font-weight: 700;
         }
@@ -109,10 +138,23 @@
         .tiles-type1 .value {
             padding: 2px 5px 5px 5px;
             font-size: 1.5em;
-            color: #5f5757;
+            /* color: #5f5757; */
             letter-spacing: 1px;
             font-weight: 700;
             text-align: right;
+        }
+
+        .tiles-type2 .icon {
+            width: 35px;
+            height: 35px;
+            background: url(ticket.png);
+            background-size: 30px 30px;
+            border-radius: 50%;
+            box-shadow: inset 5px 5px 10px #cbced1, inset -5px -5px 10px #ffffff;
+            background-color: white;
+            padding: 4px;
+            background-repeat: no-repeat;
+            background-position: center;
         }
     </style>
 </head>
@@ -126,7 +168,7 @@
         <div class="ttdashboard ttshadow">
             <canvas id="myChart"></canvas>
         </div>
-        <div class="ttTypeInfo ttshadow">
+        <div class="ttTypeInfo tthallow">
         </div>
     </div>
 </body>

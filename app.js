@@ -22,9 +22,10 @@ const gColors = [
 const colors = ['#ffffff', '#ffffff', '#ffffff', , '#ffffff'];
 
 class Tiles {
-  constructor (data, element) {
+  constructor (data, element, type) {
     this.data = data;
     this.element = element;
+    this.type= type;
     console.log (this.data);
 
     this.buildTiles ();
@@ -38,9 +39,14 @@ class Tiles {
         if (idx != 0 && idx % 2 == 0)
           parent = $ ('<div/>', {
             class: 'tiles-container',
-            style: 'margin-top:4px;',
+            style: 'margin-top:15px;',
           });
-        let tile = this.getTile (key, this.data[key], idx);
+        let tile;
+        if (this.type == 'type2') 
+          tile = this.getTileType2 (key, this.data[key], idx);
+        else 
+          tile = this.getTileType1 (key, this.data[key], idx);
+
         parent.append (tile);
         $ (this.element).append (parent);
       });
@@ -50,17 +56,31 @@ class Tiles {
     console.log ($ (this.element));
   }
 
-  getTile (key, value, idx) {
+  getTileType1 (key, value, idx) {
     let parent = $ ('<div/>', {
       class: 'tiles-type1',
       style: 'background:' + colors[idx],
     });
-    $ ('<div/>', {text: key, class: 'head'}).appendTo (parent);
+    $ ('<div/>', {text: key, class: 'head texts'}).appendTo (parent);
     let valueDiv = $ ('<div/>', {
       style: 'width: 100%;display: flex;padding: 7px 5px 5px 5px;',
     }).appendTo (parent);
     $ ('<div/>', {class: 'iconspace'}).appendTo (valueDiv);
-    $ ('<div/>', {text: value, style:'width:50%', class: 'value'}).appendTo (valueDiv);
+    $ ('<div/>', {text: value, style: 'width:50%', class: 'value'}).appendTo (
+      valueDiv
+    );
+    return parent;
+  }
+
+
+  getTileType2 (key, value, idx) {
+    let parent = $ ('<div/>', {
+      class: 'tiles-type2'
+    });
+    let iconDiv = $ ('<div/>', { style : "margin-bottom:20px;height:35px;display:flex;justify-content:center;"}).appendTo(parent);
+    $ ('<div/>', { class: 'icon'}).appendTo(iconDiv);
+    $ ('<div/>', { text: value , class: 'value texts'}).appendTo(parent);
+    $ ('<div/>', { text: key, class: 'head texts' }).appendTo(parent);
     return parent;
   }
 }
@@ -97,4 +117,5 @@ function drawChart () {
   });
 }
 
-new Tiles (data, '.ttsummary');
+new Tiles (data, '.ttsummary', 'type1');
+new Tiles (dataCnt, '.ttTypeInfo', 'type2');
