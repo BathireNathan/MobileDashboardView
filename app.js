@@ -16,10 +16,10 @@ const gColors = [
   'linear-gradient(315deg, #09203f 0%, #537895 74%);',
   'linear-gradient( 112.9deg, rgba(112,255,151,1) 6.2%, rgba(70,195,255,1) 99.7% )',
   'linear-gradient(315deg, #a1c4fd 0%, #a1c4fd 74%);',
-  'linear-gradient(315deg, #ffecd2 0%, #fcb69f 74%);'
+  'linear-gradient(315deg, #ffecd2 0%, #fcb69f 74%);',
 ];
 
-const colors = ['#ffffff','#ffffff','#ffffff',,'#ffffff'];
+const colors = ['#ffffff', '#ffffff', '#ffffff', , '#ffffff'];
 
 class Tiles {
   constructor (data, element) {
@@ -36,7 +36,10 @@ class Tiles {
       let parent = $ ('<div/>', {class: 'tiles-container'});
       Object.keys (this.data).forEach ((key, idx) => {
         if (idx != 0 && idx % 2 == 0)
-          parent = $ ('<div/>', {class: 'tiles-container', style: 'margin-top:4px;'});
+          parent = $ ('<div/>', {
+            class: 'tiles-container',
+            style: 'margin-top:4px;',
+          });
         let tile = this.getTile (key, this.data[key], idx);
         parent.append (tile);
         $ (this.element).append (parent);
@@ -53,7 +56,11 @@ class Tiles {
       style: 'background:' + colors[idx],
     });
     $ ('<div/>', {text: key, class: 'head'}).appendTo (parent);
-    $ ('<div/>', {text: value, class: 'value'}).appendTo (parent);
+    let valueDiv = $ ('<div/>', {
+      style: 'width: 100%;display: flex;padding: 7px 5px 5px 5px;',
+    }).appendTo (parent);
+    $ ('<div/>', {class: 'iconspace'}).appendTo (valueDiv);
+    $ ('<div/>', {text: value, style:'width:50%', class: 'value'}).appendTo (valueDiv);
     return parent;
   }
 }
@@ -90,5 +97,4 @@ function drawChart () {
   });
 }
 
-
-new Tiles(data, '.ttsummary');
+new Tiles (data, '.ttsummary');
