@@ -7,6 +7,7 @@
     <title>TT Dashoard</title>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0-rc.1/Chart.js"></script>
     <script defer src="./app.js"></script>
     <style>
         body {
@@ -15,44 +16,113 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            background: #ecf0f3;
         }
 
-        .container {
+        .ttheader{
+            font-size: 1em;
+            letter-spacing: 1px;
+            text-align: left;
+            width: 100%;
+            padding-left: 20px;
+            color: rgb(228, 104, 228);
+            font-weight: bolder;
+            margin-bottom: 5px;
+            /* font-family: sans-serif; */
+        }
+
+        .ttcontainer {
             width: 300px;
-            height: 90vh;
-            margin-top: 20px;
-            background-color: lightgray;
+            height: 100%;
+            background: #ecf0f3;
+            /* border-radius: 20px; */
+        }
+
+        .ttshadow {
+            margin: 10px 6px 6px 6px;
             border-radius: 20px;
+            box-shadow: 5px 5px 10px #cbced1,
+                -5px -5px 10px #ffffff;
         }
 
-        .dashboard {
-            position: relative;
-            height: 69vh;
-            background-color: white;
-            margin: 0px 4px;
-            border-radius: 25px 25px 20px 20px;
-            box-shadow: 0px 2px 2px 4px lightgray;
-        }
-
-        .summary {
-            height: 20vh;
+        .ttsummary {
+            height: 100px;
             display: flex;
-            justify-content: center;
-            padding: 5px 10px;
+            flex-direction: column;
+            align-items: center;
+            padding: 2px 10px 5px 10px;
+        }
+
+        .ttTypeInfo {
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 7px 10px;
+        }
+
+        .ttdashboard {
+            height: 200px;
+            padding: 5px;
+
+        }
+
+        .ttdashboard #myChart {
+            height: 200px;
+            width: 100%;
+        }
+
+        /* tiles css start  */
+
+        .tiles-container {
+            width: 100%;
+            display: flex;
+        }
+
+        .tiles-type1 {
+            padding: 3%;
+            height: 55px;
+            width: 46%;
+            background-color: rgb(228, 220, 220);
+            border-radius: 10px;
+            margin: 0px 10px;
+            box-shadow: inset 2px 2px 8px lightgray,
+                    inset -2px -2px 8px rgb(228, 220, 220);
+        }
+
+
+
+
+        .tiles-type1 .head {
+            padding-left: 4px;
+            font-size: 1em;
+            color: #5f5757;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .tiles-type1 .value {
+            padding: 2px 5px 5px 5px;
+            font-size: 1.5em;
+            color: #5f5757;
+            letter-spacing: 1px;
+            font-weight: 700;
+            text-align: right;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <div class="summary">
-
+    <div class="ttcontainer">
+        <div class="ttsummary ttshadow">
+                <div class="ttheader">Ticket Count</div>
         </div>
-        <div class="dashboard">
-
+        <div class="ttdashboard ttshadow">
+            <canvas id="myChart"></canvas>
         </div>
-
+        <div class="ttTypeInfo ttshadow">
+        </div>
     </div>
 </body>
 
