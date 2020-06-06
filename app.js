@@ -19,7 +19,7 @@ const gColors = [
   'linear-gradient(315deg, #ffecd2 0%, #fcb69f 74%);',
 ];
 
-const colors = ['#ffffff', '#ffffff', '#ffffff', , '#ffffff'];
+const colors = ['#F67280', '#00A8B5', '#F8B195', '#74B49B', '#C06C84'];
 
 class Tiles {
   constructor (data, element, type) {
@@ -59,7 +59,7 @@ class Tiles {
   getTileType1 (key, value, idx) {
     let parent = $ ('<div/>', {
       class: 'tiles-type1',
-      style: 'background:' + colors[idx],
+      style: 'background:' + colors[idx] + ';color:#FFFFFF',
     });
     $ ('<div/>', {text: key, class: 'head texts'}).appendTo (parent);
     let valueDiv = $ ('<div/>', {
@@ -75,7 +75,8 @@ class Tiles {
 
   getTileType2 (key, value, idx) {
     let parent = $ ('<div/>', {
-      class: 'tiles-type2'
+      class: 'tiles-type2',
+      style: 'background:' + colors[idx] + ';color:#FFFFFF',
     });
     let iconDiv = $ ('<div/>', { style : "margin-bottom:20px;height:35px;display:flex;justify-content:center;"}).appendTo(parent);
     $ ('<div/>', { class: 'icon'}).appendTo(iconDiv);
